@@ -3,26 +3,432 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>School Website</title>
- <link rel="stylesheet" href="growing stars.css">
+  <title>Growing Stars Nursery and Primary School</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      color: #f1f5f9;
+      background: #0f172a;
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      flex-wrap: wrap;
+    }
+
+    nav h1 {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      margin: 0;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: #6366f1;
+      transition: width 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #6366f1;
+    }
+
+    nav ul li a:hover::after {
+      width: 80%;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: #fff;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    /* Hero (Home) */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)),
+        url('https://images.unsplash.com/photo-1509062522246-3755977927d7') no-repeat center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: #fff;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      top: -200px;
+      right: -200px;
+      animation: pulse 6s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.15); opacity: 0.8; }
+    }
+
+    .hero h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: 1.5rem;
+      animation: fadeDown 1.5s ease-out;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      margin-bottom: 2rem;
+      animation: fadeUp 2s ease-out;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero a {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: #fff;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      animation: fadeUp 2.5s ease-out;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+      display: inline-block;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero a:hover {
+      background: linear-gradient(135deg, #8b5cf6, #ec4899);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+    }
+
+    /* General Section Style */
+    section {
+      padding: 5rem 5%;
+      max-width: 1400px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    section p {
+      text-align: center;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      margin-bottom: 2rem;
+      color: #cbd5e1;
+      line-height: 1.8;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* List style */
+    .list {
+      max-width: 900px;
+      margin: 2rem auto;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .list li {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      list-style: none;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .list li:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: #6366f1;
+      transform: translateX(10px);
+      box-shadow: 0 5px 20px rgba(99, 102, 241, 0.3);
+    }
+
+    /* Get Started Section */
+    .cta {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: #fff;
+      text-align: center;
+      padding: 5rem 5%;
+      border-radius: 30px;
+      margin: 4rem 5%;
+      box-shadow: 0 20px 60px rgba(99, 102, 241, 0.4);
+    }
+
+    .cta h2 {
+      color: #fff !important;
+      -webkit-text-fill-color: #fff;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta p {
+      color: rgba(255, 255, 255, 0.95);
+      margin-bottom: 2rem;
+    }
+
+    .cta a {
+      background: #fff;
+      padding: 1rem 3rem;
+      border-radius: 50px;
+      color: #6366f1;
+      text-decoration: none;
+      font-weight: 700;
+      transition: all 0.3s;
+      display: inline-block;
+      font-size: clamp(1rem, 2vw, 1.1rem);
+    }
+
+    .cta a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      background: #020617;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 2rem 5%;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    footer p {
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      margin: 0.5rem 0;
+    }
+
+    /* Animations */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 968px) {
+      nav {
+        padding: 1rem 3%;
+      }
+
+      nav ul {
+        gap: 1rem;
+      }
+
+      section {
+        padding: 4rem 3%;
+      }
+
+      .cta {
+        margin: 3rem 3%;
+        padding: 4rem 3%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      nav ul {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: rgba(15, 23, 42, 0.98);
+        width: 100%;
+        text-align: center;
+        transition: left 0.3s ease;
+        padding: 2rem 0;
+        gap: 0;
+      }
+
+      nav ul.active {
+        left: 0;
+      }
+
+      nav ul li {
+        margin: 1rem 0;
+      }
+
+      nav ul li a {
+        display: block;
+        padding: 1rem;
+      }
+
+      .hero {
+        padding: 6rem 1.5rem 3rem;
+      }
+
+      section {
+        padding: 3rem 1.5rem;
+      }
+
+      .cta {
+        margin: 2rem 1.5rem;
+        padding: 3rem 1.5rem;
+        border-radius: 20px;
+      }
+
+      .list {
+        gap: 0.8rem;
+      }
+
+      .list li {
+        padding: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        padding: 1rem 4%;
+      }
+
+      nav h1 {
+        font-size: 1rem;
+      }
+
+      .hero {
+        padding: 5rem 1rem 2rem;
+      }
+
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .hero a {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+      }
+
+      section {
+        padding: 2.5rem 1rem;
+      }
+
+      .cta {
+        margin: 1.5rem 1rem;
+        padding: 2.5rem 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Navbar -->
   <nav>
-    <h1 id="schoolName">Growing Stars Nursey and primary school</h1>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About Us</a></li>
-      <li><a href="#">AI & Tech</a></li>
-      <li><a href="#">AI for All Schools</a></li>
-      <li><a href="#">Projects</a></li>
-   
+    <h1 id="schoolName">Growing Stars Nursery and Primary School</h1>
+    <ul id="navMenu">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#tech">AI & Tech</a></li>
+      <li><a href="#aiAll">AI for All Schools</a></li>
+      <li><a href="#projects">Projects</a></li>
     </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </nav>
 
   <!-- Hero (Home) -->
   <section class="hero" id="hero">
-    <h2>Growing Stars Nursey and primary school</h2>
+    <h2>Growing Stars Nursery and Primary School</h2>
     <p>Empowering education with innovation and technology.</p>
     <a href="yea.html">Join Now</a>
   </section>
@@ -30,54 +436,26 @@
   <!-- About Us -->
   <section id="about">
     <h2>About Us</h2>
-    <p>We are dedicated to excellence in education, combining modern learning with future-driven technologies
-      At Growing Stars Nursery and Primary School, our purpose is to nurture every child into becoming a shining star—academically, morally, and spiritually. We are committed to providing a safe, stimulating, and Christ-centered learning environment where children discover their God-given potential and grow with confidence, discipline, and excellence.
+    <p>We are dedicated to excellence in education, combining modern learning with future-driven technologies. At Growing Stars Nursery and Primary School, our purpose is to nurture every child into becoming a shining star—academically, morally, and spiritually. We are committed to providing a safe, stimulating, and Christ-centered learning environment where children discover their God-given potential and grow with confidence, discipline, and excellence.</p>
 
-We believe education goes beyond textbooks; it is about building character, instilling values, and equipping learners with the knowledge and skills needed to thrive in today’s world. Our mission is to partner with parents in raising well-rounded children who will not only excel in their academics but also uphold integrity, creativity, and responsibility in every sphere of life.
+    <p>We believe education goes beyond textbooks; it is about building character, instilling values, and equipping learners with the knowledge and skills needed to thrive in today's world. Our mission is to partner with parents in raising well-rounded children who will not only excel in their academics but also uphold integrity, creativity, and responsibility in every sphere of life.</p>
 
-With passionate teachers, modern teaching methods, and a culture of neatness, punctuality, and hard work, we prepare our learners to stand out as leaders of tomorrow.
+    <p>With passionate teachers, modern teaching methods, and a culture of neatness, punctuality, and hard work, we prepare our learners to stand out as leaders of tomorrow. At Growing Stars, every child is a treasure, every talent is nurtured, and every effort is celebrated.</p>
 
-At Growing Stars, every child is a treasure, every talent is nurtured, and every effort is celebrated.
+    <h3 style="text-align: center; color: #6366f1; margin-top: 3rem; margin-bottom: 1rem; font-size: clamp(1.5rem, 3vw, 2rem);">Purpose Statement</h3>
+    <p style="font-style: italic;">"Raising shining stars through Christ-centered education, academic excellence, and strong values."</p>
+    <p style="font-style: italic;">"At Growing Stars, every child is nurtured to discover their God-given potential and shine bright in life."</p>
+    <p style="font-style: italic;">"Building leaders of tomorrow with knowledge, discipline, and faith."</p>
 
-Purpose Statement 
-1. “Raising shining stars through Christ-centered education, academic excellence, and strong values.”
+    <h3 style="text-align: center; color: #6366f1; margin-top: 3rem; margin-bottom: 1rem; font-size: clamp(1.5rem, 3vw, 2rem);">🌟 Vision</h3>
+    <p>To be a leading Christ-centered school where every child is nurtured to shine with excellence in academics, character, and faith, becoming a positive influence in society.</p>
 
+    <h3 style="text-align: center; color: #6366f1; margin-top: 3rem; margin-bottom: 1rem; font-size: clamp(1.5rem, 3vw, 2rem);">Mission</h3>
+    <p>To provide quality and affordable education in a safe, stimulating, and godly environment. To instill discipline, creativity, and moral values that prepare children for future leadership. To partner with parents in raising confident, responsible, and well-rounded learners. To inspire every child to discover and maximize their God-given potential.</p>
 
-2. “At Growing Stars, every child is nurtured to discover their God-given potential and shine bright in life.”
+    <h3 style="text-align: center; color: #6366f1; margin-top: 3rem; margin-bottom: 1rem; font-size: clamp(1.5rem, 3vw, 2rem);">Motto</h3>
+    <p style="font-weight: bold; font-size: 1.3rem;">"Shining in Knowledge and Character."</p>
 
-
-3. “Building leaders of tomorrow with knowledge, discipline, and faith.”
-
-🌟 Growing Stars Nursery and Primary School
-
-Vision
-
-To be a leading Christ-centered school where every child is nurtured to shine with excellence in academics, character, and faith, becoming a positive influence in society.
-
-Mission
-
-To provide quality and affordable education in a safe, stimulating, and godly environment.
-
-To instill discipline, creativity, and moral values that prepare children for future leadership.
-
-To partner with parents in raising confident, responsible, and well-rounded learners.
-
-To inspire every child to discover and maximize their God-given potential.
-
-
-Motto
-
-“Shining in Knowledge and Character.”
-
-Statement of Purpose
-
-At Growing Stars Nursery and Primary School, our purpose is to nurture every child into becoming a shining star—academically, morally, and spiritually. We are committed to providing a safe, stimulating, and Christ-centered learning environment where children discover their God-given potential and grow with confidence, discipline, and excellence.
-
-We believe education goes beyond textbooks; it is about building character, instilling values, and equipping learners with the knowledge and skills needed to thrive in today’s world. Our mission is to partner with parents in raising well-rounded children who will not only excel in their academics but also uphold integrity, creativity, and responsibility in every sphere of life.
-
-With passionate teachers, modern teaching methods, and a culture of neatness, punctuality, and hard work, we prepare our learners to stand out as leaders of tomorrow.
-
-At Growing Stars, every child is a treasure, every talent is nurtured, and every effort is celebrated..</p>
     <ul class="list">
       <li>✔ Quality Education</li>
       <li>✔ Technology-Driven Learning</li>
@@ -88,13 +466,13 @@ At Growing Stars, every child is a treasure, every talent is nurtured, and every
 
   <!-- AI & Tech -->
   <section id="tech">
-    <h2>AI & Technology</h2>
-    <p>We focus on integrating Artificial Intelligence and advanced technologies into the learning environment.</p>
+    <h2>Purpose Statement </h2>
+
     <ul class="list">
-      <li>🤖 Machine Learning Basics</li>
-      <li>📊 Data Science for Students</li>
-      <li>🌐 Web Development Projects</li>
-      <li>🧠 AI in Classrooms</li>
+      <li>1. “Raising shining stars through Christ-centered education, academic excellence, and strong values.”</li>
+      <li>“At Growing Stars, every child is nurtured to discover their God-given potential and shine bright in life.”</li>
+      <li>“Building leaders of tomorrow with knowledge, discipline, and faith.”</li>
+      
     </ul>
   </section>
 
@@ -115,10 +493,10 @@ At Growing Stars, every child is a treasure, every talent is nurtured, and every
     <h2>Our Projects</h2>
     <p>We work on hands-on projects to inspire students and enhance learning:</p>
     <ul class="list">
-      <li>🌐 School Website Development</li>
-      <li>📱 Mobile Learning Apps</li>
-      <li>🤖 AI Chatbots for Education</li>
-      <li>💻 Coding Workshops</li>
+      <li>🏫 Quality Primary Education</li>
+  <li>🧒 Early Childhood Learning</li>
+  <li>📚 Moral and Academic Excellence</li>
+  <li>🎨 Creative and Fun Learning Environment</li>
     </ul>
   </section>
 
@@ -131,14 +509,27 @@ At Growing Stars, every child is a treasure, every talent is nurtured, and every
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 [Your School Name]. All Rights Reserved.</p>
+    <p>&copy; 2025 Growing Stars Nursery and Primary School. All Rights Reserved.</p>
   </footer>
 
   <script>
+    // Mobile menu toggle
+    function toggleMenu() {
+      const navMenu = document.getElementById('navMenu');
+      navMenu.classList.toggle('active');
+    }
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('#navMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navMenu').classList.remove('active');
+      });
+    });
+
     // Change school name dynamically
-    document.getElementById("schoolName").innerText = "Growing Stars Nursey and primary school";
-    document.querySelector(".hero h2").innerText = "Growing Stars Nursey and primary school";
-    document.querySelector("footer p").innerText = "© Growing Stars Nursey and primary school All Rights Reserved.";
+    document.getElementById("schoolName").innerText = "Growing Stars Nursery and Primary School";
+    document.querySelector(".hero h2").innerText = "Growing Stars Nursery and Primary School";
+    document.querySelector("footer p").innerText = "© 2025 Growing Stars Nursery and Primary School. All Rights Reserved.";
 
     // Fade-in effect when scrolling
     const sections = document.querySelectorAll("section");

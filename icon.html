@@ -1,61 +1,158 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Growing Stars</title>
+  <style>
+    /* ======= BASIC STYLING ======= */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(
+        135deg,
+        #8ec5fc 0%,
+        #e0c3fc 100%
+      ); /* soft playful colors */
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ======= FORM BOX ======= */
+    .box {
+      width: 380px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .box h1 {
+      text-transform: uppercase;
+      font-size: 24px;
+      color: #ffd700;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .box h2 {
+      color: #fff;
+      font-weight: 500;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    /* ======= INPUT FIELDS ======= */
+    .box input[type="text"],
+    .box input[type="password"],
+    .box input[type="tel"],
+    .box input[type="email"],
+    .box select {
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      display: block;
+      margin: 15px auto;
+      text-align: center;
+      border: 2px solid #ffd700;
+      padding: 12px 15px;
+      width: 80%;
+      outline: none;
+      color: white;
+      border-radius: 25px;
+      transition: 0.3s;
+      font-size: 14px;
+    }
+
+    .box input::placeholder {
+      color: #ddd;
+    }
+
+    .box input:focus,
+    .box select:focus {
+      border-color: #2ecc71;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .box select {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+
+    .box select option {
+      color: black;
+    }
+
+    /* ======= BUTTON ======= */
+    .box input[type="submit"] {
+      background: #ffd700;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .box input[type="submit"]:hover {
+      background: #2ecc71;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    /* ======= FOOTER ======= */
+    .note {
+      margin-top: 20px;
+      color: #fff;
+      font-size: 13px;
+      opacity: 0.8;
+    }
+  </style>
 </head>
 <body>
-    <form class="box" form action="#" method = "post">
-      <h1>Weclome to hgtn</h1>
-      <p><input type="text" placeholder="enter your surname"></p>
-      <p><input type="text" placeholder="enter your first name"></p>
-        <p><input type="text" placeholder="enter your email"></p>
-      </p><input type="phone number"placeholder="phone number"><p>
-        <p><input type="password"placeholder="enter your password"  maxlength="10"><p>
-          <p><input type="password"placeholder="confirm your password"  maxlength="10"><p>
-         <input type="text" name="" placeholder="nick name" maxlength="12">
-         <p><input type="password"placeholder="confirm your password"  maxlength="10"><p>
-          
+  <form class="box" action="#" method="post">
+    <h1>Welcome to Growing Stars</h1>
+    <h2>Primary & Nursery School Registration</h2>
 
-    <select>
-            <option value="select">select your nationality</option>
-            <option value="select">Nigeria</option>
-            <option value="select">Usa</option>
-            <option value="select">Ghana</option>
-            <option value="select">China</option>
-            <option value="select">india</option>
-            <option value="select">Germany</option>
+    <input type="text" name="surname" placeholder="Enter your surname" required>
+    <input type="text" name="firstname" placeholder="Enter your first name" required>
+    <input type="email" name="email" placeholder="Enter your email" required>
+    <input type="tel" name="phone" placeholder="Enter your phone number" required>
+    <input type="password" name="password" placeholder="Enter your password" maxlength="10" required>
+    <input type="password" name="confirm_password" placeholder="Confirm your password" maxlength="10" required>
+    <input type="text" name="nickname" placeholder="Nick name" maxlength="12">
 
+    <select name="nationality" required>
+      <option value="">Select your nationality</option>
+      <option value="Nigeria">Nigeria</option>
+      <option value="USA">USA</option>
+      <option value="Ghana">Ghana</option>
+      <option value="China">China</option>
+      <option value="India">India</option>
+      <option value="Germany">Germany</option>
+    </select>
 
+    <select name="birthmonth" required>
+      <option value="">Select your birth month</option>
+      <option value="January">January</option>
+      <option value="February">February</option>
+      <option value="March">March</option>
+      <option value="April">April</option>
+      <option value="May">May</option>
+      <option value="June">June</option>
+      <option value="July">July</option>
+      <option value="August">August</option>
+      <option value="September">September</option>
+      <option value="October">October</option>
+      <option value="November">November</option>
+      <option value="December">December</option>
+    </select>
 
-        </select><br><br><br>
-        
-    <select>
-      <option value="">select your month</option>
-      <option value="">january</option>
-      <option value="">febuary</option>
-      <option value="">march</option>
-      <option value="">april</option>
-      <option value="">may</option>
-      <option value="">june</option>
-      <option value="">july</option>
-      <option value="">august</option>
-      <option value="">stemeber</option>
-      <option value="">october</option>
-      <option value="">november</option>
-      <option value="">December</option>
+    <input type="submit" value="Register">
 
-
-
-
-  </select><br><br><br>
-  
-        <input type="submit" name=""  value="register">
-    </form>
-    
+    <p class="note">By registering, you agree to our school’s terms and child safety policy.</p>
+  </form>
 </body>
 </html>
