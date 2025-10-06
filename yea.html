@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Growing Stars Portal - Login</title>
+  <link rel="stylesheet" href="yea.css">
+</head>
+<body>
+  <div class="login-container">
+    <img src="WhatsApp Image 2025-08-21 at 11.42.55_9cda2bf2.jpg" alt="School Logo" class="logo">
+    <h2>Login to Growing Stars Portal</h2>
+
+    <form id="loginForm">
+      <!-- User Type -->
+      <label for="userType">User Type:</label>
+      <select id="userType" name="userType" required>
+        <option value="student">Student</option>
+        <option value="parent">Parent</option>
+        <option value="teacher">Teacher</option>
+        <option value="admin">Admin</option>
+      </select>
+
+      <!-- Username / Email -->
+      <label for="username">Username / Email / :</label>
+      <input type="text" id="username" name="username" required>
+
+      <!-- Password -->
+      <label for="password">Password:</label>
+      <div class="password-box">
+        <input type="password" id="password" name="password" required>
+    
+      </div>
+
+      <!-- Remember Me -->
+      <label>
+        <input type="checkbox" id="rememberMe"> Remember Me
+      </label>
+
+      <button type="submit" class="btn">Login</button>
+    </form>
+
+    <div class="links">
+      <a href="#">Forgot Password?</a> | 
+      <a href="icon.html">Register</a>
+    </div>
+
+    <p class="support">Need help? Call 09021090512 or email 
+      <a href="mailto:growingstars2024@yahoo.com">growingstars2024@yahoo.com</a>
+    </p>
+  </div>
+
+  <script src="yea.js"></script>
+</body>
+</html>

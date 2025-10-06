@@ -1,0 +1,56 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.login-container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+}
+.logo {
+  width: 80px;
+  margin-bottom: 15px;
+}
+input, select, button {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+.password-box {
+  display: flex;
+}
+.password-box input {
+  flex: 1;
+}
+.password-box button {
+  background: #eee;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+.btn {
+  background: #4facfe;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+.btn:hover {
+  background: #00c6ff;
+}
+.links {
+  margin: 15px 0;
+}
+.support {
+  font-size: 13px;
+  color: gray;
+}

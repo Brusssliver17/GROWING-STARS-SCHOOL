@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School Website</title>
+ <link rel="stylesheet" href="growing stars.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <h1 id="schoolName">Growing Stars Nursey and primary school</h1>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">AI & Tech</a></li>
+      <li><a href="#">AI for All Schools</a></li>
+      <li><a href="#">Projects</a></li>
+   
+    </ul>
+  </nav>
+
+  <!-- Hero (Home) -->
+  <section class="hero" id="hero">
+    <h2>Growing Stars Nursey and primary school</h2>
+    <p>Empowering education with innovation and technology.</p>
+    <a href="yea.html">Join Now</a>
+  </section>
+
+  <!-- About Us -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>We are dedicated to excellence in education, combining modern learning with future-driven technologies
+      At Growing Stars Nursery and Primary School, our purpose is to nurture every child into becoming a shining star—academically, morally, and spiritually. We are committed to providing a safe, stimulating, and Christ-centered learning environment where children discover their God-given potential and grow with confidence, discipline, and excellence.
+
+We believe education goes beyond textbooks; it is about building character, instilling values, and equipping learners with the knowledge and skills needed to thrive in today’s world. Our mission is to partner with parents in raising well-rounded children who will not only excel in their academics but also uphold integrity, creativity, and responsibility in every sphere of life.
+
+With passionate teachers, modern teaching methods, and a culture of neatness, punctuality, and hard work, we prepare our learners to stand out as leaders of tomorrow.
+
+At Growing Stars, every child is a treasure, every talent is nurtured, and every effort is celebrated.
+
+Purpose Statement 
+1. “Raising shining stars through Christ-centered education, academic excellence, and strong values.”
+
+
+2. “At Growing Stars, every child is nurtured to discover their God-given potential and shine bright in life.”
+
+
+3. “Building leaders of tomorrow with knowledge, discipline, and faith.”
+
+🌟 Growing Stars Nursery and Primary School
+
+Vision
+
+To be a leading Christ-centered school where every child is nurtured to shine with excellence in academics, character, and faith, becoming a positive influence in society.
+
+Mission
+
+To provide quality and affordable education in a safe, stimulating, and godly environment.
+
+To instill discipline, creativity, and moral values that prepare children for future leadership.
+
+To partner with parents in raising confident, responsible, and well-rounded learners.
+
+To inspire every child to discover and maximize their God-given potential.
+
+
+Motto
+
+“Shining in Knowledge and Character.”
+
+Statement of Purpose
+
+At Growing Stars Nursery and Primary School, our purpose is to nurture every child into becoming a shining star—academically, morally, and spiritually. We are committed to providing a safe, stimulating, and Christ-centered learning environment where children discover their God-given potential and grow with confidence, discipline, and excellence.
+
+We believe education goes beyond textbooks; it is about building character, instilling values, and equipping learners with the knowledge and skills needed to thrive in today’s world. Our mission is to partner with parents in raising well-rounded children who will not only excel in their academics but also uphold integrity, creativity, and responsibility in every sphere of life.
+
+With passionate teachers, modern teaching methods, and a culture of neatness, punctuality, and hard work, we prepare our learners to stand out as leaders of tomorrow.
+
+At Growing Stars, every child is a treasure, every talent is nurtured, and every effort is celebrated..</p>
+    <ul class="list">
+      <li>✔ Quality Education</li>
+      <li>✔ Technology-Driven Learning</li>
+      <li>✔ Innovation and Creativity</li>
+      <li>✔ Preparing Students for the Future</li>
+    </ul>
+  </section>
+
+  <!-- AI & Tech -->
+  <section id="tech">
+    <h2>AI & Technology</h2>
+    <p>We focus on integrating Artificial Intelligence and advanced technologies into the learning environment.</p>
+    <ul class="list">
+      <li>🤖 Machine Learning Basics</li>
+      <li>📊 Data Science for Students</li>
+      <li>🌐 Web Development Projects</li>
+      <li>🧠 AI in Classrooms</li>
+    </ul>
+  </section>
+
+  <!-- AI for All Schools -->
+  <section id="aiAll">
+    <h2>AI for All Schools</h2>
+    <p>AI is not just for the future—it is for every school today.</p>
+    <ul class="list">
+      <li>📚 Personalized Learning</li>
+      <li>💡 Smart Education Tools</li>
+      <li>🌍 Global Collaboration</li>
+      <li>🚀 Preparing Future Innovators</li>
+    </ul>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Our Projects</h2>
+    <p>We work on hands-on projects to inspire students and enhance learning:</p>
+    <ul class="list">
+      <li>🌐 School Website Development</li>
+      <li>📱 Mobile Learning Apps</li>
+      <li>🤖 AI Chatbots for Education</li>
+      <li>💻 Coding Workshops</li>
+    </ul>
+  </section>
+
+  <!-- Get Started -->
+  <section class="cta" id="getstarted">
+    <h2>Get Started with Us</h2>
+    <p>Join us on a journey of innovation and education. Be part of the future!</p>
+    <a href="yea.html">Register now</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 [Your School Name]. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Change school name dynamically
+    document.getElementById("schoolName").innerText = "Growing Stars Nursey and primary school";
+    document.querySelector(".hero h2").innerText = "Growing Stars Nursey and primary school";
+    document.querySelector("footer p").innerText = "© Growing Stars Nursey and primary school All Rights Reserved.";
+
+    // Fade-in effect when scrolling
+    const sections = document.querySelectorAll("section");
+    const revealSections = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < triggerBottom) {
+          section.classList.add("visible");
+        }
+      });
+    };
+    window.addEventListener("scroll", revealSections);
+    window.addEventListener("load", revealSections);
+  </script>
+</body>
+</html>
